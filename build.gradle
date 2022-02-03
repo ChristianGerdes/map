@@ -1,0 +1,98 @@
+plugins {
+    id 'java'
+
+    id 'application'
+
+    id 'jacoco'
+
+    //id 'com.github.sherter.google-java-format' version '0.8'
+
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+
+javafx {
+    version = "13"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs = ['-Xmx8g']
+}
+
+run {
+    applicationDefaultJvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED',
+                                 '--add-exports=javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED',
+                                 '--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED',
+                                 '--add-exports=javafx.graphics/com.sun.glass.ui=ALL-UNNAMED',
+                                 '--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED',
+
+    ]
+
+    jvmArgs = ['--add-exports=javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED',
+               '--add-exports=javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED',
+               '--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED',
+               '--add-exports=javafx.graphics/com.sun.glass.ui=ALL-UNNAMED',
+               '--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED',
+    ]
+
+
+}
+
+dependencies {
+    compile group: 'de.codecentric.centerdevice', name: 'javafxsvg', version: '1.3.0'
+    compile group: 'org.controlsfx', name: 'controlsfx', version: '11.0.1'
+
+    compile 'org.openjfx:javafx-fxml:11.0.2'
+    compile 'org.openjfx:javafx-base:11.0.2'
+    compile 'org.openjfx:javafx-graphics:11.0.2:win'
+    compile 'org.openjfx:javafx-graphics:11.0.2:linux'
+    compile 'org.openjfx:javafx-graphics:11.0.2:mac'
+
+    // Use JUnit Jupiter Engine for testing.
+    testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    // Allow for JUnit 4 legacy
+    testCompileOnly 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.5.1'
+}
+
+application {
+    mainClassName = 'bfst20.mapit.Main'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        outputs.upToDateWhen {false}
+        showStandardStreams = true
+    }
+}
+
+
+
+task fatJar(type: Jar) {
+    from 'resources', {
+        into 'resources'
+    }
+    manifest {
+        attributes 'Main-Class': application.mainClassName
+    }
+    baseName = 'MapIt'
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+
+<HBox xmlns:fx="http://javafx.com/fxml" HBox.hgrow="ALWAYS" styleClass="group" spacing="5" alignment="CENTER">
+    <ComboBox fx:id="treesSelector" styleClass="select"/>
+
+    <HBox spacing="5" alignment="CENTER" HBox.hgrow="ALWAYS">
+        <Label text="Display: "/>
+        <CheckBox fx:id="toggleCheckbox" selected="true" styleClass="checkbox"/>
+    </HBox>
+
+    <Button fx:id="resetButton" mnemonicParsing="false" styleClass="btn, btn-icon">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@../icons/UI/reload.svg" requestedWidth="20" requestedHeight="20"/>
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+</HBox>

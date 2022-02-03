@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.Region?>
+<?import bfst20.mapit.components.TypeColors?>
+<?import bfst20.mapit.components.TreeVisibilityToggles?>
+
+<?import bfst20.mapit.MapCanvas?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ColorPicker?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<Scene xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bfst20.mapit.Controller" height="700" width="1200">
+    <root>
+        <AnchorPane styleClass="edge-to-edge" prefWidth="1200.0" prefHeight="700.0">
+            <children>
+                <AnchorPane prefHeight="700.0" prefWidth="1200.0" viewOrder="3">
+                    <children>
+                        <MapCanvas fx:id="mapCanvas" height="700.0" width="1200.0" />
+                        <Pane fx:id="debugBox" AnchorPane.leftAnchor="407.0" AnchorPane.topAnchor="35.0"/>
+
+                        <VBox fx:id="scale_ruler_container" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="390.0" spacing="5">
+                            <children>
+                                <Label fx:id="measurement_label" styleClass="measurement_text_color" alignment="CENTER" prefHeight="17.0" prefWidth="200.0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <Rectangle styleClass="measurement_rectangle" arcHeight="5.0" arcWidth="5.0" height="9.0" strokeType="INSIDE" width="200.0" />
+                            </children>
+                        </VBox>
+
+                        <VBox AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                            <children>
+                                <Label fx:id="roadName" styleClass="road_name_label"/>
+                            </children>
+                        </VBox>
+
+                    </children>
+                </AnchorPane>
+
+                <Button fx:id="toggleSidebarButton" mnemonicParsing="false" layoutX="370" minHeight="67" styleClass="hideButton" viewOrder="1">
+                    <graphic>
+                        <ImageView>
+                            <image>
+                                <Image url="@../icons/UI/navbar_icon_left.svg" requestedWidth="25" requestedHeight="25"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <AnchorPane fx:id="sidebar_container" minWidth="0" minHeight="0" maxWidth="370" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" styleClass="sidebar" viewOrder="2">
+                    <children>
+                        <BorderPane styleClass="edge-to-edge" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" maxWidth="370">
+                            <top>
+                                <VBox>
+                                    <HBox styleClass="sidebar_top" spacing="5" alignment="CENTER_LEFT">
+                                        <TextField fx:id="searchInput" HBox.hgrow="ALWAYS" styleClass="input" promptText="Enter address" />
+
+                                        <Button fx:id="colorModeButton" styleClass="btn, btn-icon">
+                                            <graphic>
+                                                <ImageView>
+                                                    <image>
+                                                        <Image url="@../icons/UI/moon_icon.svg" requestedWidth="20" requestedHeight="20"/>
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+
+                                        <Button fx:id="toggleSettingsButton" styleClass="btn, btn-icon">
+                                            <graphic>
+                                                <ImageView>
+                                                    <image>
+                                                        <Image url="@../icons/UI/settings_icon.svg" requestedWidth="20" requestedHeight="20"/>
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                    </HBox>
+
+                                    <VBox fx:id="settingsMenu" >
+                                        <HBox styleClass="settings-wrapper" spacing="20" alignment="CENTER">
+                                            <Button fx:id="saveButton" mnemonicParsing="false" styleClass="btn, btn-icon">
+                                                <graphic>
+                                                    <ImageView>
+                                                        <image>
+                                                            <Image url="@../icons/UI/save_icon.svg" requestedWidth="25" requestedHeight="25"/>
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Button>
+                                            <Button fx:id="loadButton" mnemonicParsing="false" styleClass="btn, btn-icon">
+                                                <graphic>
+                                                    <ImageView>
+                                                        <image>
+                                                            <Image url="@../icons/UI/load_icon.svg" requestedWidth="25" requestedHeight="25"/>
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Button>
+                                            <Button fx:id="toggleColorMenuButton" mnemonicParsing="false" styleClass="btn, btn-icon">
+                                                <graphic>
+                                                    <ImageView>
+                                                        <image>
+                                                            <Image url="@../icons/UI/color_picker_icon.svg" requestedWidth="25" requestedHeight="25"/>
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Button>
+                                            <Button fx:id="toggleDrawableMenuButton" mnemonicParsing="false" styleClass="btn, btn-icon">
+                                                <graphic>
+                                                    <ImageView>
+                                                        <image>
+                                                            <Image url="@../icons/UI/edit.svg" requestedWidth="25" requestedHeight="25"/>
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Button>
+                                        </HBox>
+
+                                        <TypeColors fx:id="typeColors"/>
+
+                                        <TreeVisibilityToggles fx:id="treeVisibilityToggles"/>
+                                    </VBox>
+                                </VBox>
+                            </top>
+
+                            <center>
+                                <ScrollPane hbarPolicy="NEVER" fitToWidth="true" prefWidth="370" styleClass="edge-to-edge">
+                                    <content>
+                                        <VBox prefWidth="370" spacing="40" style="-fx-padding: 25px 0px;">
+
+                                            <!-- Navigation group -->
+                                            <VBox spacing="12" styleClass="group">
+                                                <Label styleClass="secondaryHeader" text="Navigation" />
+
+                                                <VBox spacing="15">
+                                                    <HBox spacing="5" alignment="CENTER_LEFT">
+                                                        <Button fx:id="carVehicleButton" styleClass="btn, btn-active">
+                                                            <graphic>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../icons/UI/nav_car.svg" requestedWidth="25" requestedHeight="25"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button fx:id="bikeVehicleButton" styleClass="btn">
+                                                            <graphic>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../icons/UI/nav_bike.svg" requestedWidth="25" requestedHeight="25"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </graphic>
+                                                        </Button>
+                                                        <Button fx:id="walkVehicleButton" styleClass="btn">
+                                                            <graphic>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../icons/UI/nav_walk.svg" requestedWidth="25" requestedHeight="25"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </graphic>
+                                                        </Button>
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <HBox fx:id="routeOptions" spacing="10" alignment="CENTER_LEFT">
+                                                            <fx:define>
+                                                                <ToggleGroup fx:id="routeToggleGroup"/>
+                                                            </fx:define>
+
+                                                            <RadioButton fx:id="fastestRouteButton" mnemonicParsing="false" text="Fastest" styleClass="radio-button" toggleGroup="$routeToggleGroup"/>
+                                                            <RadioButton fx:id="shortestRouteButton" mnemonicParsing="false" text="Shortest" styleClass="radio-button" toggleGroup="$routeToggleGroup"/>
+                                                        </HBox>
+                                                    </HBox>
+
+                                                    <VBox spacing="5">
+                                                        <HBox spacing="5" alignment="center">
+                                                            <TextField fx:id="navInputFrom" styleClass="input" promptText="Start" HBox.hgrow="ALWAYS"/>
+                                                            <Button styleClass="btn, btn-icon" fx:id="startPointButton" >
+                                                                <graphic>
+                                                                    <ImageView>
+                                                                        <image>
+                                                                            <Image url="@../icons/UI/START_POINT.svg" requestedWidth="20" requestedHeight="20"/>
+                                                                        </image>
+                                                                    </ImageView>
+                                                                </graphic>
+                                                            </Button>
+                                                        </HBox>
+                                                        <HBox spacing="5" alignment="center">
+                                                            <TextField fx:id="navInputTo" styleClass="input" promptText="Destination" HBox.hgrow="ALWAYS"/>
+                                                            <Button styleClass="btn, btn-icon" fx:id="endPointButton" >
+                                                                <graphic>
+                                                                    <ImageView>
+                                                                        <image>
+                                                                            <Image url="@../icons/UI/END_POINT.svg" requestedWidth="20" requestedHeight="20"/>
+                                                                        </image>
+                                                                    </ImageView>
+                                                                </graphic>
+                                                            </Button>
+                                                        </HBox>
+                                                    </VBox>
+
+                                                    <HBox spacing="10">
+                                                        <Button fx:id="navigateButton" mnemonicParsing="false" styleClass="btn, btn-text" text="Navigate" />
+                                                        <Button fx:id="resetNavigationButton" mnemonicParsing="false" styleClass="btn, btn-text" text="Reset" />
+
+                                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                                        <Button styleClass="btn, btn-icon" fx:id="swapOriginDestinationButton">
+                                                            <graphic>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../icons/UI/nav_swap.svg" requestedWidth="20" requestedHeight="20"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </graphic>
+                                                        </Button>
+                                                    </HBox>
+
+                                                    <Label fx:id="navigationErrorLabel" styleClass="navigation-route-error"/>
+                                                </VBox>
+                                            </VBox>
+
+                                            <!-- My locations -->
+                                            <VBox spacing="12" styleClass="group">
+                                                <HBox spacing="5" alignment="CENTER_LEFT">
+                                                    <Label styleClass="secondaryHeader" text="Locations"/>
+                                                    <CheckBox fx:id="poiToggleCheckbox" selected="true" styleClass="checkbox"/>
+
+                                                    <Region HBox.hgrow="ALWAYS"/>
+
+                                                    <Button fx:id="addPOIButton" mnemonicParsing="false" text="Add point" styleClass="btn, btn-text"/>
+                                                </HBox>
+
+                                                <VBox fx:id="points" />
+                                            </VBox>
+
+                                            <!-- Directions -->
+                                            <VBox fx:id="directionsBox" spacing="12">
+                                                <HBox alignment="CENTER_LEFT" styleClass="group">
+                                                    <Label styleClass="secondaryHeader" text="Directions" />
+
+                                                    <Region HBox.hgrow="ALWAYS"/>
+
+                                                    <Label fx:id="directionTotalDistanceLabel" styleClass="directions-total-distance-label"/>
+                                                </HBox>
+
+                                                <VBox fx:id="directions" />
+                                            </VBox>
+                                        </VBox>
+                                    </content>
+                                </ScrollPane>
+                            </center>
+                        </BorderPane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </root>
+</Scene>

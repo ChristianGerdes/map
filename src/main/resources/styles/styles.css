@@ -1,0 +1,135 @@
+.root {
+	-fx-focus-color: transparent;
+	-fx-font-family: Arial;
+}
+
+.hideButton {
+	-fx-cursor: hand;
+	-fx-alignment: center;
+	-fx-background-insets: 0;
+	-fx-padding: 0px;
+	-fx-border-width: 0px 1px 1px 0px;
+	-fx-background-radius: 0;
+}
+
+.sidebar {
+	-fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0, 0.2), 20, 0, 0, 0);
+}
+
+.sidebar_top {
+	-fx-padding: 15px 20px;
+	-fx-border-width: 0 0 1 0;
+}
+
+.road_name_label {
+	-fx-padding: 10px 15px;
+	-fx-border-radius: 3px;
+}
+
+.group {
+	-fx-padding: 0px 20px;
+}
+
+.sideMenuBox {
+	-fx-padding: 15px;
+	-fx-spacing: 5px;
+	-fx-border-width: 2px 0px 2px 0px;
+}
+
+.secondaryHeader {
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+}
+
+.btn {
+	-fx-cursor: hand;
+	-fx-alignment: center;
+	-fx-background-insets: 0 0 -1 0, 0, 1, 2;
+}
+
+.btn-icon {
+	-fx-padding: 7px 8px;
+}
+
+.btn-text {
+	-fx-padding: 9px 15px;
+}
+
+.settings-wrapper {
+	-fx-padding: 20px;
+}
+
+.directions-total-distance-label {
+	-fx-padding: 0px 15px;
+}
+
+.directions-item {
+	-fx-padding: 12px 20px;
+	-fx-cursor: hand;
+}
+
+.direction-item-distance {
+	-fx-font-weight: 700;
+}
+
+.poi-item {
+	-fx-padding: 6px 0px;
+}
+
+.poi-item-icon {
+	-fx-cursor: hand;
+}
+
+.navigation-route-error {
+	-fx-text-fill: #F40000;
+}
+
+/* ------------. */
+/* Form elements */
+/* ------------. */
+.input {
+	-fx-padding: 8px 10px;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
+	-fx-focus-color: transparent;
+	-fx-background-color: -fx-control-inner-background;
+}
+
+.radio-button {
+	-fx-background-insets: 0;
+}
+
+.radio-button > .radio {
+	-fx-background-insets: 0;
+}
+
+.checkbox {
+	-fx-background-insets: 0;
+}
+
+.checkbox:focused {
+	-fx-background-insets: 0;
+}
+
+.checkbox > .box {
+	-fx-border-radius: 3px;
+	-fx-background-radius: 3px;
+	-fx-background-insets: 0;
+}
+
+.select {
+    -fx-background-radius: 3;
+    -fx-background-insets: 0;
+    -fx-padding: 4px 10px;
+}
+
+
+
+.edge-to-edge .scroll-bar:horizontal ,
+.edge-to-edge  .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.edge-to-edge .increment-button ,.edge-to-edge .decrement-button {
+    -fx-background-color:transparent;
+}

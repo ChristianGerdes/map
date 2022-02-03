@@ -1,0 +1,64 @@
+.root {
+	-fx-text-fill: BLACK;
+}
+
+.scroll-pane {
+	-fx-background: white;
+	-fx-border-color: white;
+ }
+
+.hideButton {
+	-fx-background-color: #FAFAFA;
+	-fx-border-color: #F2F2F2;
+}
+
+.hideButton:hover {
+	-fx-background-color: #F2F2F2;
+}
+
+.sidebar_top {
+	-fx-border-color: #F2F2F2;
+	-fx-background-color: #FAFAFA;
+}
+
+.measurement_rectangle {
+	-fx-fill: white;
+	-fx-stroke: #999999;
+}
+
+.road_name_label {
+	-fx-fill: black;
+	-fx-background-color: white;
+	-fx-border-color: #999999;
+}
+
+.sidebar {
+	-fx-background-color: white;
+}
+
+.secondaryHeader {
+	-fx-text-fill: #222222;
+}
+
+.directions-item:hover {
+	-fx-background-color: #F2F2F2;
+}
+
+.btn, .select, .input {
+	-fx-background-color: #F2F2F2;
+}
+
+.btn:hover, .btn-active {
+	-fx-background-color: #DADADA;
+}
+
+.radio-button > .radio, .checkbox > .box {
+	-fx-background-color: #E5E5E5;
+}
+
+.edge-to-edge .scroll-bar:horizontal .thumb,
+.edge-to-edge .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(grey,90%);
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-radius: 0em;
+}

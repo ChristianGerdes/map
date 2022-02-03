@@ -1,0 +1,158 @@
+[
+  {
+    "name": "Drawable",
+    "superclasses": "",
+    "subclasses": "DashedPath, Line, LinePath, PolyLinePath, DrawText",
+    "type": 3,
+    "responsibilities": [
+      "Draw Paths",
+      "Draw shapes of objects "
+    ],
+    "collaborators": [
+      "Model"
+    ]
+  },
+  {
+    "name": "Type",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Set color of objects",
+      "Set render distance of objects",
+      "Set line width of objects"
+    ],
+    "collaborators": [
+      "Model",
+      "MapCanvas",
+      "Drawable",
+      "Line",
+      "LinePath",
+      "PolyLinePath",
+      "DrawText",
+      "DashedPath",
+      ""
+    ]
+  },
+  {
+    "name": "OSMWay",
+    "superclasses": "ArrayList<OSMNode>, LongSupplier",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Merge coastline",
+      "Set draw points for LinePath"
+    ],
+    "collaborators": [
+      "Model",
+      "OSMRelation",
+      ""
+    ]
+  },
+  {
+    "name": "OSMRelation",
+    "superclasses": "ArrayList<OSMWay>",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "List of OSMWay's"
+    ],
+    "collaborators": [
+      "Model",
+      "PolyLinePath",
+      ""
+    ]
+  },
+  {
+    "name": "OSMNode",
+    "superclasses": "LongSupplier",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Store latitude and longitude for an encountered node",
+      "Sets draw points for Line.java",
+      ""
+    ],
+    "collaborators": [
+      "Model",
+      "Line",
+      "OSMWay"
+    ]
+  },
+  {
+    "name": "Line",
+    "superclasses": "Drawables, Serializable ",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Draw line between two OSMNode's latitude and longitude",
+      "!! Currently not being used !!"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "LinePath",
+    "superclasses": "Drawables",
+    "subclasses": "AmenityWay",
+    "type": 1,
+    "responsibilities": [
+      "Draws a line path given by an OSMWay"
+    ],
+    "collaborators": [
+      "Model"
+    ]
+  },
+  {
+    "name": "PolyLinePath",
+    "superclasses": "Drawables, ArrayList<LinePath>",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Draws polygon by drawing line paths given by OSMRelation",
+      " "
+    ],
+    "collaborators": [
+      "Model"
+    ]
+  },
+  {
+    "name": "AmenityWay",
+    "superclasses": "LinePath",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Places an amenity logo in the center of an amenity area"
+    ],
+    "collaborators": [
+      "Model"
+    ]
+  },
+  {
+    "name": "AmenityNode",
+    "superclasses": "Drawables",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Places an amenity logo on a nodes latitude and longitude",
+      "If a corresponding image of an amenity cannot be found, the logo is replaced by the amenity's first letter"
+    ],
+    "collaborators": [
+      "Model"
+    ]
+  },
+  {
+    "name": "IconsLoader",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Loads icon from file and store them in a linear probing hash table"
+    ],
+    "collaborators": [
+      "AmenityWay",
+      "AmenityNode"
+    ]
+  }
+]
